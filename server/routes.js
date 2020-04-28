@@ -6,14 +6,21 @@ router.get('/transactions', (req, res) => {
   res.sendStatus(200);
 });
 
+router.post('/transactions', (req, res) => {
+  res.sendStatus(201);
+});
 
+router.put('/transactions', (req, res) => {
+  res.sendStatus(202);
+});
 
-
+// export - for use by server/index.js
 module.exports = router;
 
 
 /*
 TODO: 
-Test with postman [x]
-
+Test GET with postman  [x]
+Test POST with postman [x]
+Test PUT with postman  [x]
 */
