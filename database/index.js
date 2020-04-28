@@ -34,20 +34,11 @@ const Budget = mongoose.model('Budget', budgetSchema)
 const PayType = mongoose.model('PayType', payTypeSchema)
 const Account = mongoose.model('Account', accountSchema)
 
-// DB Methods
-const save = () => {}
-const retrieve = () => {}
-const update = () => {}
-const del = () => {}
-
 // Exports
 module.exports = {
+  db,
   Txn,
   Budget,
   PayType,
-  Account,
-  save,
-  retrieve,
-  update,
-  del
+  Account
 }
