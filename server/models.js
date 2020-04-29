@@ -2,25 +2,43 @@
 const { db, Txn, Budget, PayType, Account } = require('../database/index.js')
 
 // Model Methods // (1)
-const save = (params) => {
+const save = (params, model) => {
+  console.log(params);
+  console.log(model);
+  if (model === 'transaction') {
+  const newDate = new Date();
   let txnInstance = new Txn({
-    date: params.date,
-    descr: params.descr,
-    amount: params.amount,
-    type: params.type,
-    category: params.category,
+    date: newDate,
+    descr: params.inputdescription,
+    amount: params.inputamount,
+    type: params.type || 'none',
+    category: params.inputcategory,
   })
   return txnInstance.save();
+} else if (model === 'category') {
+  let categoryInst = new Budget({
+    category: params.inputcategory,
+    budget: params.inputbudget || 0,
+    remaining: params.remaining || 0,
+  })
+  return categoryInst.save();
+}
   // console.log(`* Models.save | req.body.params`, req.body.params)
   // let collection = params.
   // db.Txn.insertOne(req.body.params.txn)
   // res.status(201)
 }
-const retrieve = () => {
+
+const retrieve = (model) => {
   // console.log(`* Models.retrieve | req.query`, req.query)
+  if (model === 'transaction') {
   return Txn.find().exec()
+  } else if (model === 'category'){
+    return Budget.find().exec();
+  }
   // res.status(200).json(txns)
 }
+
 const update = (update) => {
   return Txn.updateOne(update).exec();
   /*
@@ -42,6 +60,7 @@ const update = (update) => {
   res.status(201)
   */
 }
+
 const del = (params) => {
   return Txn.deleteOne(params).exec();
   
