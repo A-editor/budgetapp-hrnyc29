@@ -1,4 +1,5 @@
 import React from "react";
+import CategoryOptions from "./CategoryOptions.jsx";
 
 const TransactionList = (props) => (
   <div className="txn">
@@ -17,12 +18,12 @@ const TransactionList = (props) => (
             <div className="txn-data">{transaction.description}</div>
             <div className="txn-data">{transaction.amount}</div>
             <div className="txn-data">
-              {/* <CategoryOptions
+              <CategoryOptions
                 transactions={props.transactions[i]}
                 update={props.update}
                 id={transaction.id}
                 newcata={props.categories}
-              /> */}
+              />
             </div>
           </div>
         );

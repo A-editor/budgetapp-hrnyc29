@@ -1,6 +1,6 @@
 import React from "react";
 
-class BudgetInput extends React.Component {
+class AddCategories extends React.Component {
   constructor(props) {
     super(props);
 
@@ -18,7 +18,11 @@ class BudgetInput extends React.Component {
   }
 
   handleClick() {
-    this.props.createCategory(this.state);
+    this.props.createCategories(this.state);
+    this.setState({
+      inputcategory: "",
+      inputbudget: "",
+    });
   }
 
   render() {
@@ -46,11 +50,11 @@ class BudgetInput extends React.Component {
             this.handleClick();
           }}
         >
-          +
+          Submit
         </button>
       </div>
     );
   }
 }
 
-export default BudgetInput;
+export default AddCategories;
