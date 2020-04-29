@@ -33,6 +33,7 @@ class App extends React.Component {
       ],
       allCategories: [],
     };
+<<<<<<< HEAD
     this.getTransactions = this.getTransactions.bind(this);
     this.getCategories = this.getCategories.bind(this);
     this.createTransactions = this.createTransactions.bind(this);
@@ -45,6 +46,20 @@ class App extends React.Component {
     this.getTransactions();
     this.getCategories();
     this.updateCategories();
+=======
+    this.getTransactions = this.getTransactions.bind(this)
+    this.getCategories = this.getCategories.bind(this)
+    this.createTransactions = this.createTransactions.bind(this)
+    this.createCategories = this.createCategories.bind(this)
+    this.updateCategories = this.updateCategories.bind(this)
+    this.checkState = this.checkState.bind(this)
+  }
+
+  componentDidMount() {
+    this.getTransactions()
+    this.getCategories()
+    this.updateCategories()
+>>>>>>> a48344f992d8e331ab3a2a1e3dc209106f8a0e11
   }
 
   getTransactions() {
@@ -60,7 +75,11 @@ class App extends React.Component {
 
   getCategories() {
     //this gets all the categories from the categories tables
+<<<<<<< HEAD
     console.log("called getcategories");
+=======
+    console.log("called getcategories")
+>>>>>>> a48344f992d8e331ab3a2a1e3dc209106f8a0e11
     axios
       .get("http://localhost:3000/categories")
       .then(({ data }) => {
@@ -123,12 +142,16 @@ class App extends React.Component {
   }
 
   checkState() {
+<<<<<<< HEAD
     console.log(`this.state:`, this.state);
+=======
+    console.log(`this.state:`, this.state)
+>>>>>>> a48344f992d8e331ab3a2a1e3dc209106f8a0e11
   }
 
   render() {
     return (
-      <div>
+      <div className="wrapper">
         <h1>Budget App</h1>
         <div className="app">
           <TransactionList
@@ -147,7 +170,11 @@ class App extends React.Component {
           <div className="category">
             <h3>Add Categories</h3>
             <CategoryList categories={this.state.allCategories} />
+<<<<<<< HEAD
             <AddCategories createCategory={this.createCategories.bind(this)} />
+=======
+            <AddCategories createCategory={this.createCategories.bind(this)}/>
+>>>>>>> a48344f992d8e331ab3a2a1e3dc209106f8a0e11
           </div>
         </div>
       </div>
