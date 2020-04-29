@@ -7,6 +7,15 @@ const app = express();
 app.use(parser.json());
 app.use(morgan('dev'));
 
+// Need to set headers to allow liveserver to run on my machine
+app.use((req, res, next) => {
+  res.set({
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers' : '*'
+  })
+  next();
+});
+
 // serve files in client/ double check file location
 app.use(express.static(__dirname + "/../dist"));
 
