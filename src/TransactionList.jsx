@@ -21,7 +21,7 @@ const TransactionList = (props) => (
               <CategoryOptions
                 transactions={props.transactions[i]}
                 update={props.update}
-                id={transaction.id}
+                id={props.transactions._id}
                 newcata={props.categories}
               />
             </div>

@@ -4,7 +4,7 @@ class CategoryOptions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      newid: props.id,
+      newid: props.transactions._id,
       current: [],
       clickedOn: false,
     };

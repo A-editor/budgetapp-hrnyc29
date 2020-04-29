@@ -10,30 +10,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allTransactions: [
-        //example data to be removed eventually
-        {
-          date: "2017-08-02",
-          description: "EQUATOR",
-          amount: -4.0,
-          category: "food",
-        },
-        {
-          date: "2017-08-02",
-          description: "CHIPOTLE",
-          amount: -9.19,
-          category: "entertainment",
-        },
-        {
-          date: "2017-08-03",
-          description: "BLUE BOTTLE",
-          amount: -13.29,
-          category: "entertainment",
-        },
-      ],
+      allTransactions: [],
       allCategories: [],
     };
-<<<<<<< HEAD
     this.getTransactions = this.getTransactions.bind(this);
     this.getCategories = this.getCategories.bind(this);
     this.createTransactions = this.createTransactions.bind(this);
@@ -46,20 +25,6 @@ class App extends React.Component {
     this.getTransactions();
     this.getCategories();
     this.updateCategories();
-=======
-    this.getTransactions = this.getTransactions.bind(this)
-    this.getCategories = this.getCategories.bind(this)
-    this.createTransactions = this.createTransactions.bind(this)
-    this.createCategories = this.createCategories.bind(this)
-    this.updateCategories = this.updateCategories.bind(this)
-    this.checkState = this.checkState.bind(this)
-  }
-
-  componentDidMount() {
-    this.getTransactions()
-    this.getCategories()
-    this.updateCategories()
->>>>>>> a48344f992d8e331ab3a2a1e3dc209106f8a0e11
   }
 
   getTransactions() {
@@ -75,19 +40,12 @@ class App extends React.Component {
 
   getCategories() {
     //this gets all the categories from the categories tables
-<<<<<<< HEAD
     console.log("called getcategories");
-=======
-    console.log("called getcategories")
->>>>>>> a48344f992d8e331ab3a2a1e3dc209106f8a0e11
     axios
       .get("http://localhost:3000/categories")
       .then(({ data }) => {
-        this.setState((state) => {
-          let allCategories = state.allCategories.concat(data);
-          return {
-            allCategories,
-          };
+        this.setState({
+          allCategories: data,
         });
       })
       .catch((err) => {
@@ -142,11 +100,7 @@ class App extends React.Component {
   }
 
   checkState() {
-<<<<<<< HEAD
     console.log(`this.state:`, this.state);
-=======
-    console.log(`this.state:`, this.state)
->>>>>>> a48344f992d8e331ab3a2a1e3dc209106f8a0e11
   }
 
   render() {
@@ -170,11 +124,7 @@ class App extends React.Component {
           <div className="category">
             <h3>Add Categories</h3>
             <CategoryList categories={this.state.allCategories} />
-<<<<<<< HEAD
             <AddCategories createCategory={this.createCategories.bind(this)} />
-=======
-            <AddCategories createCategory={this.createCategories.bind(this)}/>
->>>>>>> a48344f992d8e331ab3a2a1e3dc209106f8a0e11
           </div>
         </div>
       </div>
