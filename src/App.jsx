@@ -38,7 +38,7 @@ class App extends React.Component {
   getTransactions() {
     //this gets all the transactions from the transactions tables
     axios
-      .get("/api/transactions")
+      .get("/transactions")
       .then(
         (transactions) => this.setState({ allTransactions: transactions.data }) //need to fix this, should be like getCategories below
       )
