@@ -2,10 +2,18 @@
 const { db, Txn, Budget, PayType, Account } = require('../database/index.js')
 
 // Model Methods // (1)
-const save = () => {}
-const retrieve = () => {}
-const update = () => {}
-const del = () => {}
+const save = () => {
+  //
+}
+const retrieve = () => {
+  //
+}
+const update = () => {
+  //
+}
+const del = () => {
+  //
+}
 
 // Exports
 module.exports = {
