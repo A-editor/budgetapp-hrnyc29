@@ -7,11 +7,11 @@ const db = mongoose.connect(dbUrl, { useNewUrlParser: true })
 
 // Schemas
 const txnSchema = new mongoose.Schema({
-  date: { type: Date, required: true },
+  date: { type: Date, required: true, default: Date.now()},
   descr: { type: String, required: true },
-  amount: { type: Number, required: true },
-  type: { type: String, required: true },
-  category: { type: String, required: false }
+  amount: { type: Number, required: true, default: 0 },
+  type: { type: String, required: true, default: 'none' },
+  category: { type: String, required: false, default: 'none' }
 })
 
 const budgetSchema = new mongoose.Schema({

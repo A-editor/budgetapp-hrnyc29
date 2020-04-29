@@ -4,12 +4,11 @@ const { db, Txn, Budget, PayType, Account } = require('../database/index.js')
 // Model Methods // (1)
 const save = (params, model) => {
   if (model === 'transaction') {
-    const newDate = new Date();
     let txnInstance = new Txn({
-      date: newDate,
+      date: params.date,
       descr: params.inputdescription,
       amount: params.inputamount,
-      type: params.type || 'none',
+      type: params.type,
       category: params.inputcategory,
     })
     return txnInstance.save();
@@ -21,7 +20,7 @@ const save = (params, model) => {
     })
     return categoryInst.save();
   }
-}
+};
 
 const retrieve = (model) => {
   if (model === 'transaction') {
@@ -29,15 +28,16 @@ const retrieve = (model) => {
   } else if (model === 'category') {
     return Budget.find().exec();
   }
-}
+};
 
-const update = (param, model) => {
+const update = (param, model, options) => {
+  let updatedQuery = { $set: { descr: param.descr } };
   if (model === 'transaction') {
-    return Txn.updateOne(param).exec();
+    return Txn.findByIdAndUpdate(param._id, updatedQuery, options).exec();
   } else if (model === 'category') {
-    return Budget.updateOne(param).exec();
+    return Budget.findByIdAndUpdate(param_id, updatedQuery, options).exec();
   }
-}
+};
 
 const del = (params, model) => {
   if (model === 'transaction') {
@@ -45,7 +45,7 @@ const del = (params, model) => {
   } else if (model === 'category') {
     return Budget.deleteOne(params).exec();
   }
-}
+};
 
 // Exports
 module.exports = {
