@@ -1,24 +1,38 @@
 const models = require('./models.js');
 
-module.export = {
+module.exports = {
   getTransactions: (req, res) => {
-
-    // plug methods
+    console.log(req.body);
+    models
+      .retrieve()
+      .then((results) => res.json(results.data))
+      .catch((err) => console.log(err));
   },
 
   postTransactions: (req, res) => {
-
-    //plug methods
+    models
+      .save(transaction)
+      .then(() => res.sendStatus(201))
+      .catch((err) => console.error(err));
   },
 
   updateTransactions: (req, res) => {
+    models
+      .update()
+      .then(() => res.sendStatus(204))
+      .catch((err) => console.error(err));
+  },
 
-    // plug methods
+  deleteTransactions: (req, res) => {
+    models
+      .del()
+      .then(() => res.sendStatus(205))
+      .catch((err) => console.error(err));
   },
 }
 
 /*
 TODO:
-plug in models to methods[]
-RUN TEST with dummy data []
+plug in models to methods [x]
+RUN TEST with dummy data  []
 */
