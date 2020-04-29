@@ -128,26 +128,33 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="wrapper">
-        <h1>Budget App</h1>
+      <div>
+        <div className="header">
+          <h1>Budget Tracker</h1>
+          <h1>Visualization</h1>
+        </div>
         <div className="app">
-          <TransactionList
-            categories={this.state.allCategories}
-            transactions={this.state.allTransactions}
-            update={this.updateCategories.bind(this)}
-          />
-          <div className="category">
-            <h3>Add Transactions</h3>
-            <AddTransactions
-              createCategory={this.createCategories.bind(this)}
-              createTransactions={this.createTransactions.bind(this)}
+          <div className="main">
+            <TransactionList
+              categories={this.state.allCategories}
+              transactions={this.state.allTransactions}
+              update={this.updateCategories.bind(this)}
             />
-            <button onClick={this.checkState}>Check State</button>
           </div>
-          <div className="category">
-            <h3>Add Categories</h3>
-            <CategoryList categories={this.state.allCategories} />
-            <AddCategories createCategory={this.createCategories.bind(this)}/>
+          <div className="sidebar">
+            <div className="category">
+              <h3>Add Transactions</h3>
+              <AddTransactions
+                createCategory={this.createCategories.bind(this)}
+                createTransactions={this.createTransactions.bind(this)}
+              />
+            </div>
+            <div className="category">
+              <h3>Add Categories</h3>
+              <CategoryList categories={this.state.allCategories} />
+              <AddCategories createCategory={this.createCategories.bind(this)}/>
+            </div>
+            <button className="btn" onClick={this.checkState}>Check State</button>
           </div>
         </div>
       </div>
