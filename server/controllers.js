@@ -4,28 +4,27 @@ module.exports = {
   getTransactions: (req, res) => {
     console.log(req.body);
     models
-      .retrieve()
-      .then((results) => res.json(results.data))
+    .retrieve()
+      .then((results) => res.json(results))
       .catch((err) => console.log(err));
   },
 
   postTransactions: (req, res) => {
-    models
-      .save(transaction)
+    console.log(req.body);
+    models.save(req.body)
       .then(() => res.sendStatus(201))
-      .catch((err) => console.error(err));
+      .catch((err) => res.sendStatus(500));
   },
 
   updateTransactions: (req, res) => {
-    models
-      .update()
+    console.log(req.body);
+    models.update(req.body)
       .then(() => res.sendStatus(204))
       .catch((err) => console.error(err));
   },
 
   deleteTransactions: (req, res) => {
-    models
-      .del()
+    models.del(req.body)
       .then(() => res.sendStatus(205))
       .catch((err) => console.error(err));
   },
@@ -34,5 +33,6 @@ module.exports = {
 /*
 TODO:
 plug in models to methods [x]
-RUN TEST with dummy data  []
+
+RUN TEST with dummy data  [x]
 */
