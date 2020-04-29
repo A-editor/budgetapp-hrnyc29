@@ -23,5 +23,9 @@ module.exports = {
   del
 }
 
+// TODO:
+// [] Write models
+// [] Test models w/ console.logs
+
 // NOTES /////////////////////////////////////////////////////////////////////////////////
 // (1) Where do the inner methods come from? Mongoose API?
