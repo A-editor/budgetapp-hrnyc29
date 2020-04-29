@@ -2,18 +2,28 @@
 const { db, Txn, Budget, PayType, Account } = require('../database/index.js')
 
 // Model Methods // (1)
-const save = (req, res) => {
-  console.log(`* Models.save | req.body.params`, req.body.params)
-  let collection = req.body.params.collection
-  db.collection.insertOne(req.body.params.txn)
-  res.status(201)
+const save = (params) => {
+  let txnInstance = new Txn({
+    date: params.date,
+    descr: params.descr,
+    amount: params.amount,
+    type: params.type,
+    category: params.category,
+  })
+  return txnInstance.save();
+  // console.log(`* Models.save | req.body.params`, req.body.params)
+  // let collection = params.
+  // db.Txn.insertOne(req.body.params.txn)
+  // res.status(201)
 }
-const retrieve = (req, res) => {
-  console.log(`* Models.retrieve | req.query`, req.query)
-  let txns = db.transactions.find()
-  res.status(200).json(txns)
+const retrieve = () => {
+  // console.log(`* Models.retrieve | req.query`, req.query)
+  return Txn.find().exec()
+  // res.status(200).json(txns)
 }
-const update = (req, res) => {
+const update = (update) => {
+  return Txn.updateOne(update).exec();
+  /*
   // ^ When functional, refactor to destructure { params }
   // TODO: spec variables below on req.body.params and test
   console.log(`* Models.update | req.body`, req.body)
@@ -30,9 +40,13 @@ const update = (req, res) => {
     updateAction
   )
   res.status(201)
+  */
 }
-const del = (req, res) => {
+const del = (params) => {
+  return Txn.deleteOne(params).exec();
+  
   // TODO: spec variables below on req.body.params and test
+  /*
   console.log(`* Models.del | req.body`, req.body)
   let params = req.body.params
   let collection = params.collection
@@ -41,6 +55,7 @@ const del = (req, res) => {
     deleteFilter
   )
   res.status(204)
+  */
 }
 
 // Exports
