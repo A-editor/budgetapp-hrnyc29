@@ -11,6 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       allTransactions: [
+        //example data to be removed eventually
         {
           date: "2017-08-02",
           description: "EQUATOR",
@@ -38,8 +39,8 @@ class App extends React.Component {
     //this gets all the transactions from the transactions tables
     axios
       .get("/api/transactions")
-      .then((transactions) =>
-        this.setState({ allTransactions: transactions.data })
+      .then(
+        (transactions) => this.setState({ allTransactions: transactions.data }) //need to fix this, should be like getCategories below
       )
       .catch((err) => console.log({ err }));
   }
@@ -47,7 +48,7 @@ class App extends React.Component {
   getCategories() {
     //this gets all the categories from the categories tables
     axios
-      .get("/api/categories")
+      .get("/categories")
       .then(({ data }) => {
         this.setState((state) => {
           let allCategories = state.allCategories.concat(data);
@@ -62,10 +63,22 @@ class App extends React.Component {
       });
   }
 
-  createCategory(data) {
-    //this creates new transactions and categories under the budget categories list
+  createTransactions(data) {
+    //this creates new transactions and categories
     axios
-      .post("/api/categories", data)
+      .post("/transactions", data)
+      .then((data) => {
+        this.getTransactions();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  createCategories(data) {
+    axios
+      //this creates new categories and their associated budgets only
+      .post("/categories", data)
       .then((data) => {
         this.getCategories();
       })
@@ -106,9 +119,11 @@ class App extends React.Component {
             transactions={this.state.allTransactions}
             update={this.updateCategories.bind(this)}
           />
-          <div className="transactions">
+          <div className="category">
             <h3>Add Transactions</h3>
-            <AddTransactions createCategory={this.createCategory.bind(this)} />
+            <AddTransactions
+              createCategory={this.createCategories.bind(this)}
+            />
           </div>
           <div className="category">
             <h3>Add Categories</h3>

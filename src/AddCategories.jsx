@@ -18,8 +18,7 @@ class AddCategories extends React.Component {
   }
 
   handleClick() {
-    this.props.createCategory(this.state);
-    //call function which adds only category
+    this.props.createCategories(this.state);
     this.setState({
       inputcategory: "",
       inputbudget: "",

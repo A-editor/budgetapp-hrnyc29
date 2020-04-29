@@ -9,7 +9,6 @@ class AddTransactions extends React.Component {
       inputdescription: "",
       inputamount: "",
       inputcategory: "",
-      //   inputbudget: "",
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -21,8 +20,8 @@ class AddTransactions extends React.Component {
   }
 
   handleClick() {
-    this.props.createCategory(this.state);
-    //call function which adds only category
+    this.props.createTransactions(this.state);
+    this.props.createCategories(this.state);
     this.setState({
       inputdate: "",
       inputdescription: "",
@@ -33,7 +32,7 @@ class AddTransactions extends React.Component {
 
   render() {
     return (
-      <div className="category-form">
+      <div id="transactionform" className="category-form">
         <div className="category-input">
           <input
             type="text"
