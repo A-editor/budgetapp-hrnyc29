@@ -1,5 +1,5 @@
 // Imports
-const db = require('../database/index.js')
+const { db, Txn, Budget, PayType, Account } = require('../database/index.js')
 
 // Model Methods // (1)
 const save = () => {}

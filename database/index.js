@@ -2,8 +2,14 @@
 const mongoose = require('mongoose')
 
 // Connect to DB
-const dbUrl = 'mongodb://localhost:27017/budgetapp'
-const db = mongoose.connect(dbUrl, { useNewUrlParser: true })
+if (process.env.MongoUrl) {
+  const db = mongoose.connect(MongoUrl, { useNewUrlParser: true })
+} else {
+  const dbUrl = 'mongodb://localhost:27017/budgetapp'
+  const db = mongoose.connect(dbUrl, { useNewUrlParser: true })
+}
+db.on('error', console.error.bind(console, 'DB connection error')) // (1)
+db.once('open', () => console.log(`Connected to database`))
 
 // Schemas
 const txnSchema = new mongoose.Schema({
@@ -42,3 +48,6 @@ module.exports = {
   PayType,
   Account
 }
+
+// NOTES /////////////////////////////////////////////////////////////////////////////////
+// (1)? Is this necessary?
