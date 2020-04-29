@@ -4,10 +4,14 @@ html {
   overflow: scroll;
   background-color: #d7d7d7;
   font-size: 62.5%;
+  font-family: 'Roboto', helvetica, sans-serif;
+  color: #000;
 }
 h1 {
   color: white;
   background-color: black;
+  font-family: 'Roboto', san-serif;
+  font-weight: 900; /* Necessary? */
 }
 .banner {
   background: url('https://unsplash.com/photos/8lnbXtxFGZw');
@@ -21,4 +25,7 @@ h1 {
 .btn {
   background-color: #0b8e37;
   border-radius: 1.2rem;
+}
+.component {
+  border: 0.2rem solid #0b8e37;
 }
