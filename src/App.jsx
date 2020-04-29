@@ -128,7 +128,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="wrapper">
         <h1>Budget App</h1>
         <div className="app">
           <TransactionList
