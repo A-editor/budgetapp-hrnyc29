@@ -18,3 +18,7 @@ h1 {
   align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
 }
+.btn {
+  background-color: #0b8e37;
+  border-radius: 1.2rem;
+}
