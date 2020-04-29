@@ -1,12 +1,15 @@
 import React from "react";
 
-class BudgetInput extends React.Component {
+class AddTransactions extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      inputdate: "",
+      inputdescription: "",
+      inputamount: "",
       inputcategory: "",
-      inputbudget: "",
+      //   inputbudget: "",
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -19,6 +22,13 @@ class BudgetInput extends React.Component {
 
   handleClick() {
     this.props.createCategory(this.state);
+    //call function which adds only category
+    this.setState({
+      inputdate: "",
+      inputdescription: "",
+      inputamount: "",
+      inputcategory: "",
+    });
   }
 
   render() {
@@ -27,18 +37,39 @@ class BudgetInput extends React.Component {
         <div className="category-input">
           <input
             type="text"
+            name="inputdate"
+            value={this.state.inputdate}
+            onChange={this.handleChange}
+            placeholder="Date"
+          />
+          <input
+            type="text"
+            name="inputdescription"
+            value={this.state.inputdescription}
+            onChange={this.handleChange}
+            placeholder="Description"
+          />
+          <input
+            type="text"
+            name="inputamount"
+            value={this.state.inputamount}
+            onChange={this.handleChange}
+            placeholder="Amount"
+          />
+          <input
+            type="text"
             name="inputcategory"
             value={this.state.inputcategory}
             onChange={this.handleChange}
             placeholder="Budget Category"
           />
-          <input
+          {/* <input
             type="number"
             name="inputbudget"
             value={this.state.inputbudget}
             onChange={this.handleChange}
             placeholder="Target Budget"
-          />
+          /> */}
         </div>
         <button
           onClick={(event) => {
@@ -46,11 +77,11 @@ class BudgetInput extends React.Component {
             this.handleClick();
           }}
         >
-          +
+          Submit
         </button>
       </div>
     );
   }
 }
 
-export default BudgetInput;
+export default AddTransactions;
