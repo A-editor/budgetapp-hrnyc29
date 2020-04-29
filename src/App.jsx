@@ -33,12 +33,25 @@ class App extends React.Component {
       ],
       allCategories: [],
     };
+    this.getTransactions = this.getTransactions.bind(this);
+    this.getCategories = this.getCategories.bind(this);
+    this.createTransactions = this.createTransactions.bind(this);
+    this.createCategories = this.createCategories.bind(this);
+    this.updateCategories = this.updateCategories.bind(this);
+    this.checkState = this.checkState.bind(this);
+  }
+
+  componentDidMount() {
+    this.getTransactions();
+    this.getCategories();
+    this.updateCategories();
   }
 
   getTransactions() {
+    // console.log("called getTransactions")
     //this gets all the transactions from the transactions tables
     axios
-      .get("/transactions")
+      .get("http://localhost:3000/transactions")
       .then(
         (transactions) => this.setState({ allTransactions: transactions.data }) //need to fix this, should be like getCategories below
       )
@@ -47,12 +60,12 @@ class App extends React.Component {
 
   getCategories() {
     //this gets all the categories from the categories tables
+    console.log("called getcategories");
     axios
-      .get("/categories")
+      .get("http://localhost:3000/categories")
       .then(({ data }) => {
         this.setState((state) => {
           let allCategories = state.allCategories.concat(data);
-          newState.allCategories = data;
           return {
             allCategories,
           };
@@ -66,7 +79,7 @@ class App extends React.Component {
   createTransactions(data) {
     //this creates new transactions and categories
     axios
-      .post("/transactions", data)
+      .post("http://localhost:3000/transactions", data)
       .then((data) => {
         this.getTransactions();
       })
@@ -78,7 +91,7 @@ class App extends React.Component {
   createCategories(data) {
     axios
       //this creates new categories and their associated budgets only
-      .post("/categories", data)
+      .post("http://localhost:3000/categories", data)
       .then((data) => {
         this.getCategories();
       })
@@ -96,17 +109,21 @@ class App extends React.Component {
 
   //need a function to get all categories and target budget
 
-  updateCategories(category) {
+  updateCategories() {
     //this updates categories in the option select in the transactions list under categories
     axios
-      .post("/api/transactions", category)
+      .get("http://localhost:3000/transactions")
       .then((data) => {
-        console.log("data:", data);
+        // console.log("data:", data);
         this.getTransactions();
       })
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  checkState() {
+    console.log(`this.state:`, this.state);
   }
 
   render() {
@@ -123,12 +140,14 @@ class App extends React.Component {
             <h3>Add Transactions</h3>
             <AddTransactions
               createCategory={this.createCategories.bind(this)}
+              createTransactions={this.createTransactions.bind(this)}
             />
+            <button onClick={this.checkState}>Check State</button>
           </div>
           <div className="category">
             <h3>Add Categories</h3>
             <CategoryList categories={this.state.allCategories} />
-            <AddCategories />
+            <AddCategories createCategory={this.createCategories.bind(this)} />
           </div>
         </div>
       </div>
