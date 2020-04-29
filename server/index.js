@@ -1,6 +1,6 @@
 const express = require('express');
 const parser = require('body-parser');
-const port = process.env.PROCESS || 3000;
+const port = process.env.PORT || 3000;
 const morgan = require('morgan');
 
 const app = express();

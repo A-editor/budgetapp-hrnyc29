@@ -28,7 +28,7 @@ class CategoryOptions extends React.Component {
     let noCategory = this.props.newcata.map((item) => {
       return (
         <option key={item.id} value={item.inputcategory}>
-          {item.inputcategory}
+          {item.category}
         </option>
       );
     });
