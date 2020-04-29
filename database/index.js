@@ -2,14 +2,8 @@
 const mongoose = require('mongoose')
 
 // Connect to DB
-if (process.env.MongoUrl) {
-  const db = mongoose.connect(MongoUrl, { useNewUrlParser: true })
-} else {
-  const dbUrl = 'mongodb://localhost:27017/budgetapp'
-  const db = mongoose.connect(dbUrl, { useNewUrlParser: true })
-}
-db.on('error', console.error.bind(console, 'DB connection error')) // (1)
-db.once('open', () => console.log(`Connected to database`))
+const dbUrl = 'mongodb://localhost:27017/budgetapp'
+const db = mongoose.connect(dbUrl, { useNewUrlParser: true })
 
 // Schemas
 const txnSchema = new mongoose.Schema({
