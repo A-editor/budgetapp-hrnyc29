@@ -22,9 +22,14 @@ h1 {
   color: f5f5f5;
   background-color: #2e8b57;
   font-family: "Roboto", san-serif;
-  font-weight: 900; /* Necessary? */
+  font-weight: 700; /* Necessary? */
   color: #f5f5f5;
   padding: 0.5rem 0.7rem;
+}
+
+.header {
+  background: url("https://unsplash.com/photos/8lnbXtxFGZw");
+
 }
 
 .app {
@@ -33,18 +38,32 @@ h1 {
   flex-flow: row;
 }
 
+.main {
+  order: 1;
+  flex-grow: 4;
+  flex-wrap: wrap;
+  max-width: 80%;
+}
+
+.sidebar {
+  order: 2;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  max-width: 20%;
+}
+
 .txn {
   /*adjusts position of transaction table*/
-  width: 80%;
-  margin: 20px;
+  width: 95%;
+  margin: 20px auto;
 }
 
 .category {
   /*NOTE: Add Transactions component currently has this class; add a different class or id to
   adjust the Add Transactions component separately from the Add Categories component*/
   /*further adjusts add categories*/
-  width: 30%;
-  margin: 20px;
+  width: 90%;
+  margin: 20px auto;
 }
 
 .txn-table {
@@ -145,10 +164,10 @@ input:focus {
 }
 
 button {
-  float: right;
+  /* float: right; */
   padding: 8px 12px;
-  margin: 20px 0px 20px 0px;
-  border: 2px solid #2e8b57;
+  margin: 20px 0px;
+  border: 2px solid #2E8B57;
   background: 0;
   color: black;
   cursor: pointer;
@@ -168,11 +187,6 @@ button:hover {
   flex-flow: column;
 }
 
-.wrapper {
-  background: url("https://unsplash.com/photos/8lnbXtxFGZw");
-  background-size: cover;
-  padding: 4rem 2rem;
-  display: grid;
-  align-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
-}
+/* * {
+  border: 0.1rem dashed darkblue !important;
+} */
