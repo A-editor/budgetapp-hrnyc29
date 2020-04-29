@@ -17,9 +17,10 @@ module.exports = router;
 
 /*
 TODO:
-Test GET with postman  [x]
-Test POST with postman [x]
-Test PUT with postman  [x]
+Test GET with postman     [x]
+Test POST with postman    [x]
+Test PUT with postman     [x]
+Test DELETE with postman  [x]
 Conntect the controllers GET    [x]
 Conntect the controllers POST   [x]
 Conntect the controllers PUT    [x]

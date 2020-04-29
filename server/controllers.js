@@ -2,18 +2,19 @@ const models = require('./models.js');
 
 module.exports = {
   getTransactions: (req, res) => {
-    models.retrieve('transaction') // pass model
+    models.retrieve('transaction')
       .then((data) => res.json(data))
       .catch((err) => res.sendStatus(404));
   },
   postTransactions: (req, res) => {
-    models.save(req.body, 'transaction')
+    models.save(req.body, 'transaction',)
       .then(() => res.sendStatus(201))
-      .catch((err) => res.sendStatus(418));
+      .catch((err) => console.error(err));
   },
   updateTransactions: (req, res) => {
-    models.update(req.body, 'tran saction')
-      .then(() => res.sendStatus(204))
+    let options = {new: true};
+    models.update(req.body, 'transaction', options)
+      .then(() => res.sendStatus(201))
       .catch((err) => res.sendStatus(418));
   },
   deleteTransactions: (req, res) => {
@@ -41,10 +42,9 @@ module.exports = {
       .then(() => res.sendStatus(205))
       .catch((err) => res.sendStatus(418));
   },
-} 
+}
 /*
 TODO:
 plug in models to methods [x]
-
 RUN TEST with dummy data  [x]
 */
