@@ -15,7 +15,7 @@ const TransactionList = (props) => (
         return (
           <div className="txn-row">
             <div className="txn-data">{transaction.date.slice(0, 10)}</div>
-            <div className="txn-data">{transaction.description}</div>
+            <div className="txn-data">{transaction.descr}</div>
             <div className="txn-data">{transaction.amount}</div>
             <div className="txn-data">
               <CategoryOptions
