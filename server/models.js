@@ -23,7 +23,7 @@ const update = (req, res) => {
   // let key = params.key
   // let filter = params.filter
   let updateAction = params.updates.map((update) => {
-    return `{ $set: { ${updateKey}: ${updateVal} } }`
+    return { $set: { [updateKey]: updateVal } }
   })
   db.collection.updateOne(
     { key: filter },
