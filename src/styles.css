@@ -4,7 +4,7 @@
 html {
   width: 100vw;
   min-height: 100vh;
-  overflow: scroll;
+  overflow-x: hidden;
   background-color: #d7d7d7;
   font-size: 62.5%;
   font-family: 'Roboto', helvetica, sans-serif;
@@ -20,7 +20,7 @@ body {
   font-size: 62.5%;
   font-family: "Roboto", helvetica, sans-serif;
   color: #000;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 h1 {
