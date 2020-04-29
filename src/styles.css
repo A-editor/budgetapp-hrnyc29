@@ -1,5 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 
+/*
+html {
+  width: 100vw;
+  min-height: 100vh;
+  overflow: scroll;
+  background-color: #d7d7d7;
+  font-size: 62.5%;
+  font-family: 'Roboto', helvetica, sans-serif;
+  color: #000;
+}
+*/
+
 body {
   width: 100vw;
   min-height: 100vh;
@@ -156,22 +168,7 @@ button:hover {
   display: flex;
   flex-flow: column;
 }
-/* html {
-  width: 100vw;
-  min-height: 100vh;
-  overflow: scroll;
-  background-color: #d7d7d7;
-  font-size: 62.5%;
-  font-family: 'Roboto', helvetica, sans-serif;
-  color: #000;
-}
-h1 {
-  color: white;
-  background-color: black;
-  font-family: 'Roboto', san-serif;
-  font-weight: 900; 
-}
-*/
+
 .banner {
   background: url("https://unsplash.com/photos/8lnbXtxFGZw");
   background-size: cover;
