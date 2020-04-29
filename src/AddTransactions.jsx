@@ -21,7 +21,7 @@ class AddTransactions extends React.Component {
 
   handleClick() {
     this.props.createTransactions(this.state);
-    this.props.createCategories(this.state);
+    this.props.createCategory(this.state);
     this.setState({
       inputdate: "",
       inputdescription: "",
@@ -72,7 +72,6 @@ class AddTransactions extends React.Component {
         </div>
         <button
           onClick={(event) => {
-            event.preventDefault();
             this.handleClick();
           }}
         >
