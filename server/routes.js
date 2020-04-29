@@ -3,7 +3,9 @@ const controller = require('./controllers.js');
 
 // add controllers to the callbacks
 router.get('/transactions', controller.getTransactions);
+router.get('/categories', controller.getCategories);
 router.post('/transactions', controller.postTransactions);
+router.post('/categories', controller.postCategories);
 router.put('/transactions', controller.updateTransactions);
 router.delete('/transactions', controller.deleteTransactions);
 
@@ -12,7 +14,7 @@ module.exports = router;
 
 
 /*
-TODO: 
+TODO:
 Test GET with postman  [x]
 Test POST with postman [x]
 Test PUT with postman  [x]
