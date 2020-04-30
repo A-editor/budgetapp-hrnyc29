@@ -29,7 +29,6 @@ h1 {
 
 .header {
   background: url("https://unsplash.com/photos/8lnbXtxFGZw");
-
 }
 
 .app {
@@ -167,7 +166,7 @@ button {
   /* float: right; */
   padding: 8px 12px;
   margin: 20px 0px;
-  border: 2px solid #2E8B57;
+  border: 2px solid #2e8b57;
   background: 0;
   color: black;
   cursor: pointer;
@@ -185,6 +184,24 @@ button:hover {
   margin-top: 2px;
   display: flex;
   flex-flow: column;
+}
+
+.arc text {
+  font: 10px sans-serif;
+  text-anchor: middle;
+}
+
+.arc path {
+  stroke: #fff;
+}
+
+.arc2 text {
+  font: 10px sans-serif;
+  text-anchor: middle;
+}
+
+.arc2 path {
+  stroke: #fff;
 }
 
 /* * {

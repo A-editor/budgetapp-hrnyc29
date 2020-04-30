@@ -16,7 +16,7 @@ const txnSchema = new mongoose.Schema({
 
 const budgetSchema = new mongoose.Schema({
   category: { type: String, required: true },
-  budget: { type: Number, required: true, default: 0},
+  budget: { type: Number, required: true, default: 500},
   remaining: { type: Number, required: true, default: 0}
 })
 
