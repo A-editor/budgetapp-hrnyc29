@@ -27,9 +27,9 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getTransactions();
+    this.getTotalByCategory(); // binded to test
     this.getCategories();
     this.updateCategories();
-    this.getTotalByCategory(); // binded to test
   }
 
   getTransactions() {
@@ -40,6 +40,9 @@ class App extends React.Component {
       .then(
         (transactions) => this.setState({ allTransactions: transactions.data }) //need to fix this, should be like getCategories below
       )
+      .then(() => {
+        this.getTotalByCategory(); 
+      })
       .catch((err) => console.log({ err }));
   }
 
@@ -49,6 +52,7 @@ class App extends React.Component {
     axios
       .get("http://localhost:3000/categories")
       .then(({ data }) => {
+        console.log(data);
         this.setState({
           allCategories: data,
         });
@@ -65,6 +69,12 @@ class App extends React.Component {
       .then((data) => {
         this.getTransactions();
       })
+      .then(() => {
+        this.getTotalByCategory();
+      })
+      .then(() => {
+        this.getCategories();
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -76,7 +86,6 @@ class App extends React.Component {
       .post("http://localhost:3000/categories", data)
       .then((data) => {
         this.getCategories();
-        this.getTotalByCategory();
       })
       .catch((err) => {
         console.log(err);
@@ -85,7 +94,7 @@ class App extends React.Component {
 
   getTotalByCategory() {
     return axios
-      .get("http://localhost:3000/total/")
+      .get("http://localhost:3000/total")
       .then((results) => console.log(results.data)) // D3 DATA. Might have to iterate over the objects keys and properties to store items
       .catch((err) => console.error(err));
   }
