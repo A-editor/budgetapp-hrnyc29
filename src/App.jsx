@@ -1,8 +1,10 @@
 import React from "react";
+import $ from "jquery";
 import TransactionList from "./TransactionList.jsx";
 import CategoryList from "./CategoryList.jsx";
 import AddTransactions from "./AddTransactions.jsx";
 import AddCategories from "./AddCategories.jsx";
+import Chart from "./Chart.jsx";
 import CategoryOptions from "./CategoryOptions.jsx";
 import axios from "axios";
 
@@ -90,7 +92,7 @@ class App extends React.Component {
     console.log(data);
     //this updates categories in the option select in the transactions list under categories
     axios
-     .put("http://localhost:3000/transactions", data)
+      .put("http://localhost:3000/transactions", data)
       .then(() => {
         // console.log("data:", data);
         this.getTransactions();
@@ -110,6 +112,12 @@ class App extends React.Component {
         <div className="header">
           <h1>Budget Tracker</h1>
           <h1>Visualization</h1>
+          <div className="chart">
+            <Chart
+              getTransaction={this.getTransactions.bind(this)}
+              transactions={this.state.allTransactions}
+            />
+          </div>
         </div>
         <div className="app">
           <div className="main">
@@ -130,9 +138,13 @@ class App extends React.Component {
             <div className="category">
               <h3>Add Categories</h3>
               <CategoryList categories={this.state.allCategories} />
-              <AddCategories createCategory={this.createCategories.bind(this)}/>
+              <AddCategories
+                createCategory={this.createCategories.bind(this)}
+              />
             </div>
-            <button className="btn" onClick={this.checkState}>Check State</button>
+            <button className="btn" onClick={this.checkState}>
+              Check State
+            </button>
           </div>
         </div>
       </div>
