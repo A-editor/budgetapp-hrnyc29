@@ -4,6 +4,7 @@ coverage/
 dist/bundle.js
 node_modules/
 *.log
+.vscode/
 
 # OS generated files
 .DS_Store
