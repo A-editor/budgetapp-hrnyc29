@@ -24,7 +24,7 @@ const save = (params, model) => {
 
 const retrieve = (model) => {
   if (model === 'transaction') {
-    return Txn.find().exec()
+    return Txn.find().sort('-date').exec() // sort by date
   } else if (model === 'category') {
     return Budget.find().exec();
   }
