@@ -31,9 +31,10 @@ const retrieve = (model) => {
 };
 
 const update = (param, model, options) => {
-  let updatedQuery = { $set: { descr: param.descr } };
+  console.log(param)
+  let updatedQuery = { $set: { category: param.category } };
   if (model === 'transaction') {
-    return Txn.findByIdAndUpdate(param._id, updatedQuery, options).exec();
+    return Txn.findByIdAndUpdate(param.id, updatedQuery, options).exec();
   } else if (model === 'category') {
     return Budget.findByIdAndUpdate(param_id, updatedQuery, options).exec();
   }

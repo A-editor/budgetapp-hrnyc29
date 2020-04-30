@@ -86,11 +86,12 @@ class App extends React.Component {
 
   //need a function to get all categories and target budget
 
-  updateCategories() {
+  updateCategories(data) {
+    console.log(data);
     //this updates categories in the option select in the transactions list under categories
     axios
-      .get("http://localhost:3000/transactions")
-      .then((data) => {
+     .put("http://localhost:3000/transactions", data)
+      .then(() => {
         // console.log("data:", data);
         this.getTransactions();
       })

@@ -11,7 +11,8 @@ app.use(morgan('dev'));
 app.use((req, res, next) => {
   res.set({
     'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': '*'
+    'Access-Control-Allow-Headers': '*',
+    'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE',
   })
   next();
 });

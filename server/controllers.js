@@ -12,6 +12,7 @@ module.exports = {
       .catch((err) => console.error(err));
   },
   updateTransactions: (req, res) => {
+    console.log(req.body);
     let options = {new: true};
     models.update(req.body, 'transaction', options)
       .then(() => res.sendStatus(201))
