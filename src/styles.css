@@ -54,6 +54,8 @@ h1 {
   /* GRID */
   display: grid;
   justify-items: center;
+}
+
 .header {
   background: url("https://unsplash.com/photos/8lnbXtxFGZw");
 }
