@@ -17,7 +17,7 @@ module.exports = {
     let options = { new: true };
     models.update(req.body, 'transaction', options)
       .then(() => res.sendStatus(201))
-      .catch(() => res.sendStatus(418));
+      .catch((err) => console.error(err));
   },
   deleteTransactions: (req, res) => {
     models.del(req.body, 'transaction')
@@ -32,25 +32,28 @@ module.exports = {
   postCategories: (req, res) => {
     models.save(req.body, 'category')
       .then(() => res.sendStatus(201))
-      .catch(() => res.sendStatus(418));
+      .catch((err) => console.error(err));
   },
   updateCategories: (req, res) => {
     models.update(req.body, 'category')
       .then(() => res.sendStatus(204))
-      .catch(() => res.sendStatus(418));
+      .catch((err) => console.error(err));
   },
   deleteCategories: (req, res) => {
     models.del(req.body, 'category')
       .then(() => res.sendStatus(205))
-      .catch(() => res.sendStatus(418));
+      .catch((err) => console.error(err));
   },
   totalByCategories: (req, res) => {
+    let categoriesObj;
+    models.retrieve('category')
+    .then((data) => categoriesObj = data);
     models.totalByCategory()
-      .then((results) => {
-        return helper.getTotals(results)
+      .then((results) => {        
+        return helper.getTotals(categoriesObj, results)
       })
       .then((data) => res.json(data))
-      .catch(() => res.sendStatus(418));
+      .catch((err) => console.error(err));
   }
 }
 /*

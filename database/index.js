@@ -7,7 +7,7 @@ const db = mongoose.connect(dbUrl, { useNewUrlParser: true })
 
 // Schemas
 const txnSchema = new mongoose.Schema({
-  date: { type: Date, required: true, default: Date.now()},
+  date: { type: Date, required: true, default: Date.now() },
   descr: { type: String, required: true },
   amount: { type: Number, required: true, default: 0 },
   type: { type: String, required: true, default: 'none' },
@@ -15,9 +15,9 @@ const txnSchema = new mongoose.Schema({
 })
 
 const budgetSchema = new mongoose.Schema({
-  category: { type: String, required: true },
-  budget: { type: Number, required: true, default: 500},
-  remaining: { type: Number, required: true, default: 0}
+  category: { type: String, required: true, unique: true },
+  budget: { type: Number, required: true, default: 500 },
+  remaining: { type: Number, required: true, default: 0 }
 })
 
 const payTypeSchema = new mongoose.Schema({

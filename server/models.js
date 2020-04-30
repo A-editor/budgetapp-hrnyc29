@@ -31,10 +31,11 @@ const retrieve = (model) => {
 };
 
 const update = (param, model, options) => {
-  let updatedQuery = { $set: { category: param.category } };
   if (model === 'transaction') {
+    let updatedQuery = { $set: { category: param.category } };
     return Txn.findByIdAndUpdate(param.id, updatedQuery, options).exec();
   } else if (model === 'category') {
+    let updatedQuery = { $set: { remaining: param.remaining } };
     return Budget.findByIdAndUpdate(param_id, updatedQuery, options).exec();
   }
 };
