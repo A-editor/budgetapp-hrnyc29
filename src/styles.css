@@ -61,10 +61,14 @@ h3 {
 
 .show {
   background-color: #d0d0d0;
-  border: 0.1rem solid black;
+  border: 0 solid black;
   border-radius: 0.3rem;
   margin: 1rem 0;
   padding: 1rem 1.7rem;
+}
+
+.shadow {
+  box-shadow: -0.1rem 0.1rem 0.3rem 0 #777;
 }
 
 .header {
@@ -113,7 +117,6 @@ h3 {
   /*formats various aspects of transaction table*/
   display: flex;
   flex-flow: column nowrap;
-  /* justify-items: center; */
   font-size: 0.8rem;
   margin: 0 auto;
   line-height: 1.5;
