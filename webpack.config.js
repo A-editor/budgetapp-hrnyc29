@@ -19,7 +19,7 @@ const config = {
         exclude: /node_modules/,
       },
       {
-        test: /\.png$/,
+        test: /\.(jpe?g|png|gif|svg)$/i,
         use: [
           {
             loader: "url-loader",
