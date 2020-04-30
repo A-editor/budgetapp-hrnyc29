@@ -16,7 +16,7 @@ const save = (params, model) => {
     let categoryInst = new Budget({
       category: params.inputcategory,
       budget: params.inputbudget || 0,
-      remaining: params.remaining || 0,
+      remaining: params.inputbudget || 0,
     })
     return categoryInst.save();
   }
