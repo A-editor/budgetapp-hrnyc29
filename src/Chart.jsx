@@ -1,9 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import $ from "jquery";
 import * as d3 from "d3";
 import { render } from "react-dom";
 
 const Chart = (props) => {
+  d3.selectAll(".reference > *").remove();
+
   const firstdata = props.transactions;
   let newdata = firstdata.map((transaction) => {
     return transaction.category;
