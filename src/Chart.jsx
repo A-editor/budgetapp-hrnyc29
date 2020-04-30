@@ -26,7 +26,7 @@ const Chart = (props) => {
   function giveData(input) {
     var array = [];
     for (var key in input) {
-      array.push({ count: input[key], fruit: key });
+      array.push({ count: input[key], category: key });
     }
     return array;
   }
@@ -57,13 +57,15 @@ const Chart = (props) => {
   var color = d3
     .scaleOrdinal()
     .range([
-      "#ffd700",
-      "#ffb14e",
-      "#fa8775",
-      "#ea5f94",
-      "#cd34b5",
-      "#9d02d7",
-      "#0000ff",
+      "#ffffe5",
+      "#f7fcb9",
+      "#d9f0a3",
+      "#addd8e",
+      "#78c679",
+      "#41ab5d",
+      "#238443",
+      "#006837",
+      "#004529",
     ]);
   // [
   //     "#ffffe5",
@@ -128,7 +130,7 @@ const Chart = (props) => {
   g2.append("path")
     .attr("d", arc2)
     .style("fill", function (data) {
-      return color(data.data.fruit);
+      return color(data.data.category);
     })
     .transition()
     .ease(d3.easeLinear)
@@ -145,7 +147,7 @@ const Chart = (props) => {
     })
     .attr("dy", ".35em")
     .text(function (data) {
-      return data.data.fruit;
+      return data.data.category;
     });
 
   return <div className="reference">Testing Refs</div>;
