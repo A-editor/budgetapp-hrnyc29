@@ -150,7 +150,7 @@ const Chart = (props) => {
       return data.data.category;
     });
 
-  return <div className="reference">Testing Refs</div>;
+  return <div className="reference"></div>;
 };
 
 export default Chart;

@@ -6,9 +6,9 @@ const CategoryList = (props) => (
       {props.categories.map((item, i) => {
         return (
           <div key={i} className="input-data">
-            <div className="category-data">{item.category}</div>
-            <div className="budget-data">{item.budget}</div>
-            <div className="category-remaining">{item.remaining}</div>
+            <div className="category-data">Category: {item.category}</div>
+            <div className="category-data">Budget: {item.budget}</div>
+            <div className="category-data">Remaining: {item.remaining}</div>
           </div>
         );
       })}
