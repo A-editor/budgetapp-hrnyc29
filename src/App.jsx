@@ -1,8 +1,10 @@
 import React from "react";
+import $ from "jquery";
 import TransactionList from "./TransactionList.jsx";
 import CategoryList from "./CategoryList.jsx";
 import AddTransactions from "./AddTransactions.jsx";
 import AddCategories from "./AddCategories.jsx";
+import Chart from "./Chart.jsx";
 import CategoryOptions from "./CategoryOptions.jsx";
 import axios from "axios";
 
@@ -25,6 +27,7 @@ class App extends React.Component {
     this.getTransactions();
     this.getCategories();
     this.updateCategories();
+    this.getTotalByCategory() // binded to test
   }
 
   getTransactions() {
@@ -75,14 +78,21 @@ class App extends React.Component {
       .catch((err) => {
         console.log(err);
       });
-
-    // this.setState((state) => {
-    //   const allCategories = state.allCategories.concat(data);
-    //   return {
-    //     allCategories,
-    //   };
-    // });
   }
+
+  getTotalByCategory() {
+    return axios
+      .get('http://localhost:3000/total/')
+      .then((results) => console.log(results.data)) // D3 DATA. Might have to iterate over the objects keys and properties to store items
+      .catch((err) => console.error(err));
+  };
+
+  // this.setState((state) => {
+  //   const allCategories = state.allCategories.concat(data);
+  //   return {
+  //     allCategories,
+  //   };
+  // });
 
   //need a function to get all categories and target budget
 
@@ -90,7 +100,7 @@ class App extends React.Component {
     console.log(data);
     //this updates categories in the option select in the transactions list under categories
     axios
-     .put("http://localhost:3000/transactions", data)
+      .put("http://localhost:3000/transactions", data)
       .then(() => {
         // console.log("data:", data);
         this.getTransactions();
@@ -112,6 +122,12 @@ class App extends React.Component {
         </div>
         <div className="viz">
           <h1>Visualization</h1>
+          <div className="chart">
+            <Chart
+              getTransaction={this.getTransactions.bind(this)}
+              transactions={this.state.allTransactions}
+            />
+          </div>
         </div>
         <div className="main">
           <div className="show content">
