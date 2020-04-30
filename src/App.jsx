@@ -107,10 +107,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="react-container">
-        <div className="show header">
+        <div className="header">
           <h1>Budget Tracker</h1>
         </div>
-        <div className="show viz">
+        <div className="viz">
           <h1>Visualization</h1>
         </div>
         <div className="main">
@@ -123,14 +123,14 @@ class App extends React.Component {
           </div>
         </div>
         <div className="sidebar">
-          <div className="show widget">
+          <div className="show content">
             <h3>Add Transactions</h3>
             <AddTransactions
               createCategory={this.createCategories.bind(this)}
               createTransactions={this.createTransactions.bind(this)}
             />
           </div>
-          <div className="show widget">
+          <div className="show content">
             <h3>Add Categories</h3>
             <CategoryList categories={this.state.allCategories} />
             <AddCategories createCategory={this.createCategories.bind(this)}/>
