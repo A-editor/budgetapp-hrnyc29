@@ -41,7 +41,7 @@ class App extends React.Component {
         (transactions) => this.setState({ allTransactions: transactions.data }) //need to fix this, should be like getCategories below
       )
       .then(() => {
-        this.getTotalByCategory(); 
+        this.getTotalByCategory();
       })
       .catch((err) => console.log({ err }));
   }
@@ -109,12 +109,15 @@ class App extends React.Component {
   //need a function to get all categories and target budget
 
   updateCategories(data) {
-    console.log(data);
+    console.log('data');
     //this updates categories in the option select in the transactions list under categories
     axios
       .put("http://localhost:3000/transactions", data)
       .then(() => {
         // console.log("data:", data);
+        this.getTotalByCategory();
+      })
+      .then(() => {
         this.getTransactions();
       })
       .catch((err) => {
@@ -160,7 +163,7 @@ class App extends React.Component {
           <div className="show shadow content">
             <h3>Add Categories</h3>
             <CategoryList categories={this.state.allCategories} />
-            <AddCategories createCategory={this.createCategories.bind(this)}/>
+            <AddCategories createCategory={this.createCategories.bind(this)} />
           </div>
         </div>
       </div>

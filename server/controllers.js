@@ -53,7 +53,7 @@ module.exports = {
         return helper.getTotals(categoriesObj, results)
       })
       .then((data) => res.json(data))
-      .catch((err) => console.error(err));
+      .catch((err) => res.sendStatus(500));
   }
 }
 /*
