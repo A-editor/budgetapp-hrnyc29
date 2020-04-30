@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const controller = require('./controllers.js');
 
+router.get('/total', controller.totalByCategories);
+
 router.get('/transactions', controller.getTransactions);
 router.post('/transactions', controller.postTransactions);
 router.put('/transactions', controller.updateTransactions);
