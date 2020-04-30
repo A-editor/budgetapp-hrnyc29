@@ -153,7 +153,6 @@ class App extends React.Component {
             <CategoryList categories={this.state.allCategories} />
             <AddCategories createCategory={this.createCategories.bind(this)}/>
           </div>
-          <button className="btn" onClick={this.checkState}>Check State</button>
         </div>
       </div>
     );
