@@ -21,6 +21,7 @@ class App extends React.Component {
     this.createCategories = this.createCategories.bind(this);
     this.updateCategories = this.updateCategories.bind(this);
     this.checkState = this.checkState.bind(this);
+    this.getTotalByCategory = this.getTotalByCategory.bind(this);
   }
 
   componentDidMount() {
@@ -74,6 +75,7 @@ class App extends React.Component {
       .post("http://localhost:3000/categories", data)
       .then((data) => {
         this.getCategories();
+        this.getTotalByCategory();
       })
       .catch((err) => {
         console.log(err);
