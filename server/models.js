@@ -31,7 +31,6 @@ const retrieve = (model) => {
 };
 
 const update = (param, model, options) => {
-  console.log(param)
   let updatedQuery = { $set: { category: param.category } };
   if (model === 'transaction') {
     return Txn.findByIdAndUpdate(param.id, updatedQuery, options).exec();
@@ -47,13 +46,17 @@ const del = (params, model) => {
     return Budget.deleteOne(params).exec();
   }
 };
-
+  
+const totalByCategory = () => {
+  return Txn.find().sort('category').exec();
+};
 // Exports
 module.exports = {
   save,
   retrieve,
   update,
-  del
+  del,
+  totalByCategory
 }
 
 // TODO:
