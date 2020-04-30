@@ -14,6 +14,7 @@ class App extends React.Component {
     this.state = {
       allTransactions: [],
       allCategories: [],
+      allTotals: [],
     };
     this.getTransactions = this.getTransactions.bind(this);
     this.getCategories = this.getCategories.bind(this);
@@ -28,7 +29,7 @@ class App extends React.Component {
     this.getTransactions();
     this.getCategories();
     this.updateCategories();
-    this.getTotalByCategory() // binded to test
+    this.getTotalByCategory(); // binded to test
   }
 
   getTransactions() {
@@ -84,10 +85,10 @@ class App extends React.Component {
 
   getTotalByCategory() {
     return axios
-      .get('http://localhost:3000/total/')
+      .get("http://localhost:3000/total/")
       .then((results) => console.log(results.data)) // D3 DATA. Might have to iterate over the objects keys and properties to store items
       .catch((err) => console.error(err));
-  };
+  }
 
   // this.setState((state) => {
   //   const allCategories = state.allCategories.concat(data);
@@ -123,7 +124,6 @@ class App extends React.Component {
           <h1>Budget Tracker</h1>
         </div>
         <div className="viz">
-          <h1>Visualization</h1>
           <div className="chart">
             <Chart
               getTransaction={this.getTransactions.bind(this)}
